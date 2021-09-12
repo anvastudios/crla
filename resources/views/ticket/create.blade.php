@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">Kontaktanfrage</div>
                     <div class="card-body">
-                        <form autocomplete="off" action="/kontaktanfrage" method="post">
+                        <form autocomplete="off" action="/kontakt" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name*</label>
