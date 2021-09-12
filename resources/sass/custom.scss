@@ -1,0 +1,11 @@
+.float-block-ticket {
+    float: right;
+    text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+    .float-block-ticket {
+        float: none;
+        text-align: left;
+    }
+}

@@ -33,36 +33,24 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {{Request::is('kontaktanfrage*') ? 'active' : ''}}" href="/kontakt">Kontaktanfrage</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+
+                                    <a class="dropdown-item" href="/kontaktanfrage">Kontaktanfragen</a>
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Abmelden</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -76,8 +64,31 @@
         </nav>
 
         <main class="py-4">
+            @isset($meldung_success)
+                <div class="container">
+                    <div class="alert alert-success">
+                        {!! $meldung_success !!}
+                    </div>
+                </div>
+            @endisset
+
+            @if($errors->any())
+                <div class="container">
+                    <div class="alert alert-danger">
+                        Bitte überprüfe Deine Eingaben:
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{!! $error !!}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
             @yield('content')
         </main>
+        <footer class="text-center">
+            &copy 2021 by Andreas Valett <a href="{{ route('login') }}">[BO-Login]</a>
+        </footer>
     </div>
 </body>
 </html>
