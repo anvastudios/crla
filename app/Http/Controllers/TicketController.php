@@ -52,9 +52,9 @@ class TicketController extends Controller
 
         $request->validate(
             [
-                'name' => 'required',
-                'email' => 'required|email:rfc,dns',
-                'anfrage' => 'required|min:10'
+                'name' => 'required|max:255',
+                'email' => 'required|email:rfc,dns|max:255',
+                'anfrage' => 'required|min:10|max:5000'
             ]
         );
 

@@ -11,12 +11,12 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name*</label>
-                                <input type="name" class="form-control {{ $errors->has('name') ? 'border-danger' : ''}}" id="name" name="name" placeholder="Ihr Name" value="{{ old('name') }}">
+                                <input type="name" class="form-control {{ $errors->has('name') ? 'border-danger' : ''}}" id="name" name="name" maxlength="255" placeholder="Ihr Name" value="{{ old('name') }}">
                                 <small class="form-text text-danger">{!! $errors->first('name') !!}</small>
                             </div>
                             <div class="form-group">
                                 <label for="email">E-Mail-Adresse*</label>
-                                <input type="email" class="form-control {{ $errors->has('email') ? 'border-danger' : ''}}" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}">
+                                <input type="email" class="form-control {{ $errors->has('email') ? 'border-danger' : ''}}" id="email" maxlength="255" name="email" placeholder="name@example.com" value="{{ old('email') }}">
                                 <small class="form-text text-danger">{!! $errors->first('email') !!}</small>
                             </div>
                             <div class="form-group">
